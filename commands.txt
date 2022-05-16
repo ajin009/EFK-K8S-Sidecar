@@ -1,7 +1,6 @@
 kubectl exec -it $(kubectl get pods -n kube-logging |grep es-cluster-0 | sed -n 1p | awk '{print $1}') -n kube-logging -- bin/elasticsearch-setup-passwords auto -b 
 
 
-cluster 1, elastic user password =  28kStu9Ps3TCndLyFswo 
 
 picnic-task-cluster, elastic user password = Eg5ONp15TJ0j2wo3DoHI
 

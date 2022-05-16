@@ -10,15 +10,25 @@ purposes of demo and testing that the manifests work.
  **Fluentd** is an open source log collection that supports multiple
  data sources and output formats. **Kibana** is used to query Elasticsearch and build vizualization for events log.
  ## Elasticsearch
-  ### 1. ES Load balancer:
-  **elasticsearch/elasticsearch_svc.yaml**
+
+  ### 1. ConfigMap 
+  **elasticsearch/elasticsearch-config.yaml:**
+  The configMap has the necessary settings to configure the elasticsearch nodes.the settings included in this file define the cluster name,the node name,the node roles,the seed hosts and initial master nodes.It also enables xpack security for basic authentication when attempting to reach the elasticsearch cluter.
+  ### 2. ES Load balancer 
+  **elasticsearch/elasticsearch_svc.yaml:**
   * Creates a service that will define a DNS domain for the ES pods.
     when associated with ES StatefulSet,the service will return DNS an A records that point to ES pods with app: elasticsearch label.
   * The service will select pods that have the label app:elasticsearch.
   * The service is set to type LoadBalancer in order to create an external IP Address.
   * Two Ports are created 9200 and 9300 to interact with the
    rest API and inter-node communication respectively.
+  * to view the service run ```Kubectl -n kube-logging get svc```
+  * A service named elasticsearch will appear with an external IP Address.
+  * To check the health of the elasticsearch cluster, copy the IP address obtaind with the previous command and append :9200/_cluster/health/?pretty  
+  * You will be prompted for a username and password to authenticate.
+  * username: elastic and password: Eg5ONp15TJ0j2wo3DoHI
   ### 2. ES Stateful Set 
+  **elasticsearch/elasticsearch_statefulset.yaml:**
     create a Stateful set in order to have high availability 
     Instruct k8s to create 3 pods in order to maintain high availabilty
     k8s will maintain 3 pods at all time
