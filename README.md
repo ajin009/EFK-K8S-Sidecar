@@ -11,12 +11,13 @@ purposes of demo and testing that the manifests work.
  data sources and output formats. **Kibana** is used to query Elasticsearch and build vizualization for events log.
  ## Elasticsearch
   ### 1. ES Load balancer:
+  **file:elasticsearch/elasticsearch_svc.yaml**
   * Creates a service that will define a DNS domain for the ES pods.
     when associated with ES StatefulSet,the service will return DNS an A records that point to ES pods with app: elasticsearch label.
   * The service will select pods that have the label app:elasticsearch.
-  * The clusterIP is set to None which renders the servic headless.
+  * The service is set to type LoadBalancer in order to create an external IP Address.
   * Two Ports are created 9200 and 9300 to interact with the
-   rest API and inter-node communication respectively.The code is in the es-service.yaml file
+   rest API and inter-node communication respectively.
   ### 2. ES Stateful Set 
     create a Stateful set in order to have high availability 
     Instruct k8s to create 3 pods in order to maintain high availabilty
