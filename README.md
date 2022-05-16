@@ -10,14 +10,14 @@ purposes of demo and testing that the manifests work.
  **Fluentd** is an open source log collection that supports multiple
  data sources and output formats. **Kibana** is used to query Elasticsearch and build vizualization for events log.
  ## 1. ES Load balancer
-    *creates a service that will define a DNS domain for the ES pods.
-    *when associated with ES StatefulSet, the service will return
-    *DNS A records that point to ES pods with app: elasticsearch label.
-    *the service will select pods that have the label
+    *.creates a service that will define a DNS domain for the ES pods.
+    *.when associated with ES StatefulSet, the service will return
+    *.DNS A records that point to ES pods with app: elasticsearch label.
+    *.the service will select pods that have the label
       app: elasticsearch.
-    *The clusterIP is set to None which renders the service headless.
-    *Two Ports are created 9200 and 9300 to interact with the
-    *rest API and inter-node communication respectively.The code is in the es-service.yaml file
+    *.The clusterIP is set to None which renders the service headless.
+    *.Two Ports are created 9200 and 9300 to interact with the
+    *.rest API and inter-node communication respectively.The code is in the es-service.yaml file
   ## 2. ES Stateful Set 
     create a Stateful set in order to have high availability 
     Instruct k8s to create 3 pods in order to maintain high availabilty
