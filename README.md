@@ -10,7 +10,7 @@ purposes of demo and testing that the manifests work.
  **Fluentd** is an open source log collection that supports multiple
  data sources and output formats. **Kibana** is used to query Elasticsearch and build vizualization for events log.
  ## Deployment
-   ### 1. ES Headless Service
+   ## 1. ES Headless Service
     creates a service that will define a DNS domain for the ES pods.
     when associated with ES StatefulSet, the service will return
     DNS A records that point to ES pods with app: elasticsearch label.
