@@ -146,8 +146,8 @@ purposes of demo and testing that the manifests work.
   #### d. Token for pull access
   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
   ### d. credentials for the running cluster
-     **username: elastic**
-    **password: Eg5ONp15TJ0j2wo3DoHI**
+     **username:elastic**
+    **password:Eg5ONp15TJ0j2wo3DoHI**
   ### N.B:
      
   * N.B: the password indicated here is for the cluster currently
