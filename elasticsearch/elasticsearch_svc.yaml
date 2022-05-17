@@ -3,6 +3,8 @@ kind: Service
 metadata:
   name: elasticsearch
   namespace: kube-logging
+  labels:
+    app: elasticsearch
   annotations:
     service.beta.kubernetes.io/aws-load-balancer-backend-protocol: tcp
     service.beta.kubernetes.io/aws-load-balancer-cross-zone-load-balancing-enabled: "true"
