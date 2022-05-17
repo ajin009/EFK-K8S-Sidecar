@@ -1,27 +1,8 @@
 kubectl exec -it $(kubectl get pods -n kube-logging |grep es-cluster-0 | sed -n 1p | awk '{print $1}') -n kube-logging -- bin/elasticsearch-setup-passwords auto -b 
 
-
-
-picnic-task-cluster, elastic user password = Eg5ONp15TJ0j2wo3DoHI
-
+PASSWORD generate for user elastic = Eg5ONp15TJ0j2wo3DoHI
 
 
 kubectl create secret generic elasticsearch-pw-elastic -n kube-logging --from-literal password=Eg5ONp15TJ0j2wo3DoHI
 
 
-
-
-Changed password for user kibana
-PASSWORD kibana = j8YOUuPzzLQBbgzmWbjk
-
-Changed password for user logstash_system
-PASSWORD logstash_system = 1bNYtjNM2jSLUPoEuXsp
-
-Changed password for user beats_system
-PASSWORD beats_system = QuOLPTEc7FetLonoTPa7
-
-Changed password for user remote_monitoring_user
-PASSWORD remote_monitoring_user = B1sLwZqLWpz7C0P2eN8f
-
-Changed password for user elastic
-PASSWORD elastic = Eg5ONp15TJ0j2wo3DoHI
