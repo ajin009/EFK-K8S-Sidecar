@@ -14,5 +14,4 @@ allowedTopologies:
 - matchLabelExpressions: 
   - key: failure-domain.beta.kubernetes.io/zone
     values: 
-    - eu-west-1b
     - eu-west-1c
