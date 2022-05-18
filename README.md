@@ -81,7 +81,8 @@ purposes of demo and testing that the manifests work.
   * To do that start by getting the elasticsearch IP Address
    * To get the elasticsearch service run ```Kubectl -n kube-logging get svc/elasticsearch```
   * A service named elasticsearch will appear with an external IP Address.
-  * To check the health of the elasticsearch cluster, copy the IP address obtained with the previous command and append :9200/_cluster/health/?pretty  
+  * To check the health of the elasticsearch cluster, copy the IP address obtained with the previous command and append **:9200/_cluster/health/?pretty** to see the status of the cluster
+  or append **:9200/_cluster/health/?pretty** 
   * You will be prompted for a username and password to authenticate.
   * Use the following credentials ie the password generated earlier, username: elastic and password: Eg5ONp15TJ0j2wo3DoHI 
   * You should see the status of the cluster marked as green in the yaml output you get meaning everything is working.
@@ -108,7 +109,7 @@ purposes of demo and testing that the manifests work.
     ```Kubectl -n kube-logging get svc/kibana```
   * append :5601 to the ip address to and you should
     see the Kibana UI with a form for login
-    username is **elastic** and password = **Eg5ONp15TJ0j2wo3DoHI**
+    username is **elastic** and password = **c2YQoNU6WjCzoaUZmawC**
   
  
 
@@ -147,7 +148,7 @@ purposes of demo and testing that the manifests work.
   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
   ### d. credentials for the running cluster
   **username:elastic**
-  **password:Eg5ONp15TJ0j2wo3DoHI**
+  **password:c2YQoNU6WjCzoaUZmawC**
   ### N.B:
      
   * N.B: the password indicated here is for the cluster currently

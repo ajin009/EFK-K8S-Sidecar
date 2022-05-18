@@ -1,0 +1,22 @@
+affinity: 
+        nodeAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: failure-domain.beta.kubernetes.io/eu-west-1c
+                operator: In 
+                values:
+                - eu-west-1c
+                - eu-west-1a
+ 
+
+
+
+allowedTopologies: 
+- matchLabelExpressions: 
+  - key: failure-domain.beta.kubernetes.io/eu-west-1c
+    values: 
+    - eu-west-1c
+    - eu-west-1a 
+
+

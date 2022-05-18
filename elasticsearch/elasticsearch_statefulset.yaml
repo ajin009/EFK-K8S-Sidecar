@@ -4,6 +4,7 @@ metadata:
   name: es-cluster
   namespace: kube-logging
 spec:
+  
   serviceName: elasticsearch
   replicas: 3
   updateStrategy:
@@ -15,7 +16,8 @@ spec:
     metadata:
       labels:
         app: elasticsearch
-    spec:
+    spec: 
+      
       containers:
       - name: elasticsearch
         image: docker.elastic.co/elasticsearch/elasticsearch:7.2.0 
@@ -81,6 +83,7 @@ spec:
       labels:
         app: elasticsearch
     spec:
+      
       accessModes: [ "ReadWriteOnce" ]
       storageClassName: gp2
       resources:
