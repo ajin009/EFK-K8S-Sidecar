@@ -1,9 +1,10 @@
 kubectl exec -it $(kubectl get pods -n kube-logging |grep es-cluster-0 | sed -n 1p | awk '{print $1}') -n kube-logging -- bin/elasticsearch-setup-passwords auto -b 
 
-PASSWORD generate for user elastic =  c2YQoNU6WjCzoaUZmawC
 
 
 
-kubectl create secret generic elasticsearch-pw-elastic -n kube-logging --from-literal password=Eg5ONp15TJ0j2wo3DoHI
+kubectl create secret generic elasticsearch-pw-elastic -n kube-logging --from-literal password=
+
+use the password generated earlier
 
 
