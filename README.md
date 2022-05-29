@@ -84,7 +84,7 @@ purposes of demo and testing that the manifests work.
   * To check the health of the elasticsearch cluster, copy the IP address obtained with the previous command and append **:9200/_cluster/health/?pretty** to see the status of the cluster
   or append **:9200/_cluster/health/?pretty** 
   * You will be prompted for a username and password to authenticate.
-  * Use the following credentials ie the password generated earlier, username: elastic and password: Eg5ONp15TJ0j2wo3DoHI 
+  * Use the following credentials ie the password generated earlier, username: elastic and password:
   * You should see the status of the cluster marked as green in the yaml output you get meaning everything is working.
   ## Kibana Service and Deployment
      ## 1. Kibana ConfigMap
@@ -109,7 +109,7 @@ purposes of demo and testing that the manifests work.
     ```Kubectl -n kube-logging get svc/kibana```
   * append :5601 to the ip address to and you should
     see the Kibana UI with a form for login
-    username is **elastic** and password = **c2YQoNU6WjCzoaUZmawC**
+    username is **elastic** and password password genarated earlier
   
  
 
@@ -144,17 +144,10 @@ purposes of demo and testing that the manifests work.
   * Its important to clean up old indices. a k8s cron job 
   can be setup to perfom this task.
   * Having data replicated across in different availability zones can help in disaster recovery and also improve query performance.
-  #### d. Token for pull access
-  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
   ### d. credentials for the running cluster
   **username:elastic**
-  **password:c2YQoNU6WjCzoaUZmawC**
+  **password is the password genarated earlier**
   ### N.B:
-     
-  * N.B: the password indicated here is for the cluster currently
-    running in the cluster. If you follow this guide, deploy the
-    these manifests into a diffeerent namespace and generate
-    your own password.
   
   * It takes a few moments to load and now you are inside the
     kibana dashboard. it sometimes requires refreshing the page
