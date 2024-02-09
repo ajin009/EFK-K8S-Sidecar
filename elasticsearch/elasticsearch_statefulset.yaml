@@ -20,7 +20,7 @@ spec:
       
       containers:
       - name: elasticsearch
-        image: docker.elastic.co/elasticsearch/elasticsearch:7.2.0 
+        image: docker.elastic.co/elasticsearch/elasticsearch:7.2.0
         resources:
             limits:
               cpu: 1000m
@@ -85,7 +85,7 @@ spec:
     spec:
       
       accessModes: [ "ReadWriteOnce" ]
-      storageClassName: gp2
+      storageClassName: gp2-v2
       resources:
         requests:
-          storage: 10Gi
+          storage: 30Gi

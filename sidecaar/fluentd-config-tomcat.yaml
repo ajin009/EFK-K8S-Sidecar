@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: fluentd-config-tomcat
+data:
+  fluent.conf: |
+    <source>
+      @type tail
+      path /opt/tomcat/logs
+      pos_file /tmp/myapp.log.pos
+      tag tomcat
+      format none
+    </source>
+
+    <match **>
+      @type elasticsearch_dynamic
+      host "#{ENV['FLUENT_ELASTICSEARCH_HOST']}"
+      port "#{ENV['FLUENT_ELASTICSEARCH_PORT']}"
+      user "#{ENV['FLUENT_ELASTICSEARCH_USER']}"
+      password "#{ENV['FLUENT_ELASTICSEARCH_PASSWORD']}"
+      scheme "#{ENV['FLUENT_ELASTICSEARCH_SCHEME'] || 'http'}"
+      ssl_verify "#{ENV['FLUENT_ELASTICSEARCH_SSL_VERIFY'] || 'true'}"
+      logstash_format true
+      logstash_prefix tomcat
+      include_tag_key true
+      tag_key @log_name
+      flush_interval 5s
+    </match>

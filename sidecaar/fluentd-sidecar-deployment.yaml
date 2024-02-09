@@ -1,0 +1,59 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fluentd-sidecar
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: fluentd-sidecar
+  template:
+    metadata:
+      labels:
+        app: fluentd-sidecar
+    spec:
+      containers:
+        - name: fluentd
+          image: fluent/fluentd-kubernetes-daemonset:v1.12-debian-elasticsearch7-1
+          env:
+          - name:  FLUENT_ELASTICSEARCH_HOST
+            value: "elasticsearch.kube-logging.svc.cluster.local"
+          - name:  FLUENT_ELASTICSEARCH_PORT
+            value: "9200"
+          - name: FLUENT_ELASTICSEARCH_SCHEME
+            value: "http"
+          - name: FLUENT_ELASTICSEARCH_USER
+            value: "elastic" 
+          - name: FLUENT_ELASTICSEARCH_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: elasticsearch-pw-elastic
+                key: password
+          volumeMounts:
+            - name: fluentd-config
+              mountPath: /fluentd/etc/fluent.conf
+              subPath: fluent.conf
+            - name: applog
+              mountPath: /opt/tomcat/webapps/ROOT/WEB-INF/log/
+            - name: tomcatlog
+              mountPath: /opt/tomcat/logs
+        - name: sidecar-container
+          image: saravak/tomcat8
+          # Add other Tomcat container configurations
+          volumeMounts:
+            - name: applog
+              mountPath: /opt/tomcat/webapps/ROOT/WEB-INF/log/
+            - name: tomcatlog
+              mountPath: /opt/tomcat/logs
+      volumes:
+        - name: fluentd-config
+          configMap:
+            name: fluentd-config-tomcat
+        - name: applog
+          # Add the appropriate volume source for applog, for example, an emptyDir volume
+          emptyDir: {}
+        - name: tomcatlog
+          # Add the appropriate volume source for tomcatlog, for example, an emptyDir volume
+          emptyDir: {}
+
+
