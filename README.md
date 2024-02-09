@@ -153,6 +153,7 @@ purposes of demo and testing that the manifests work.
  ![image](https://github.com/ajin009/EFK-K8S-Sidecar/assets/105640840/a7dad79c-0ebc-43b6-9027-196db393d753)
  
 
-
+reference
+https://www.middlewareinventory.com/blog/kubernetes-sidecar-logging-with-fluentd-to-efk/
 
 
