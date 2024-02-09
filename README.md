@@ -10,12 +10,7 @@ purposes of demo and testing that the manifests work.
  **Fluentd** is an open source log collection that supports multiple
  data sources and output formats. **Kibana** is used to query Elasticsearch and build vizualization for events log.
 
- ## Namespace 
- **namespace/kube-loging.yaml:**
- This file creates a namepsce called kube-logging 
- where all the resources will be created instead of using
- the default namespace.
- ## StorageClass
+  ## StorageClass
  **storageclass/storage-class.yaml:**
  This file creates a storage class that will be used
  by VolumeClaimTemplates. it defines the storage class
@@ -154,21 +149,10 @@ purposes of demo and testing that the manifests work.
     when the passowrd fails as the kibana pod might not yet have
     connected to the elastic cluster yet..so refresh and try gain.
   * in order to deploy a yam file run ``` Kubectl apply -f ``` followed by the name of the file from the directory it resides in.
-  ## Conclusion
-  * The cluster achives high availability by having 3 pods of elasticsearch running at all times.
-  * Furthermore the elasticsearch cluster used an update strategy 
-    of RollingUpdates meaning there will be no downtime during upgrades
-  * The nodes in this cluster don't use different roles as the instructions required to all nodes to have a similar role.
-  * The cluster uses basic authentication to access Elasticsearch
-    kibana.
-  * Although there are Helm charts and an an Operator that could
-    I could have used and made things easier, I opted not to use
-    them instead starting from scratch because the helm charts and 
-    the operator come ready made and I wanted to do it from the
-    ground up..This way I can show more my thought process.
-    however,It is worth noting that these operators and 
-    helm charts are more fine tuned for productions environment
-    and also makes it quicker to deploy all these resources.
+ ### sidecar
+ ![image](https://github.com/ajin009/EFK-K8S-Sidecar/assets/105640840/a7dad79c-0ebc-43b6-9027-196db393d753)
+ 
+
 
 
 
